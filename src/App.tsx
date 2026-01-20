@@ -29,9 +29,7 @@ export const App: React.FC = () => {
         setTodos([]);
       })
       .finally(() => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
+        setIsLoading(false);
       });
   }, []);
 
