@@ -21,13 +21,18 @@ export const App: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    getTodos().then(todosFromServer => {
-      setTodos(todosFromServer);
-
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    });
+    getTodos()
+      .then(todosFromServer => {
+        setTodos(todosFromServer);
+      })
+      .catch(() => {
+        setTodos([]);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+      });
   }, []);
 
   const filteredTodos = todos
